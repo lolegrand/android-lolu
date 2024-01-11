@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -46,6 +48,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
 
     // Androidx
@@ -58,19 +64,15 @@ dependencies {
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation "androidx.navigation:navigation-compose:2.7.6"
 
     // Material
     implementation 'androidx.compose.material3:material3'
 
-    // Accompanist
-    implementation 'com.google.accompanist:accompanist-navigation-animation:0.30.1'
-    implementation 'accompanist-permissions:0.30.1'
-    implementation 'accompanist-systemuicontroller:0.30.1'
-
     // hilt
-    implementation 'com.google.dagger:hilt-android:2.46.1'
-    implementation 'com.google.dagger:hilt-compiler:2.46.1'
+    implementation 'com.google.dagger:hilt-android:2.48'
     implementation 'androidx.hilt:hilt-navigation-compose:1.1.0'
+    kapt 'com.google.dagger:hilt-compiler:2.46.1'
 
     // Test
     testImplementation 'junit:junit:4.13.2'

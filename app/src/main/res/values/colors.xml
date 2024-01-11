@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="lolu_primary">#1A4B95</color>
+    <color name="lolu_primary_variant">#C4CEF3</color>
+    <color name="lolu_nuance_100">#FFFFFF</color>
+    <color name="lolu_nuance_98">#F7F9FA</color>
+    <color name="lolu_nuance_92">#E6E8EB</color>
+    <color name="lolu_nuance_90">#DCE1E5</color>
+    <color name="lolu_nuance_85">#D4D7D9</color>
+    <color name="lolu_nuance_70">#AFB1B2</color>
+    <color name="lolu_nuance_55">#84888C</color>
+    <color name="lolu_nuance_35">#525659</color>
+    <color name="lolu_nuance_15">#1B2026</color>
+    <color name="lolu_error">#C62435</color>
+    <color name="lolu_warning">#EE7F00</color>
+    <color name="lolu_success">#48A291</color>
+    <color name="lolu_cable_yellow">#FCCC60</color>
+    <color name="lolu_cable_pink">#EC008D</color>
 </resources>

@@ -1,4 +1,4 @@
-package fr.enssat.bluetoothhid.lolu.enum
+package fr.enssat.bluetoothhid.lolu.enums
 
 enum class BluetoothStatus {
     ON,
