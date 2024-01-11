@@ -13,15 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import dagger.hilt.android.AndroidEntryPoint
 import fr.enssat.bluetoothhid.lolu.ui.main.MainScreen
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuTheme
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             LoLuTheme {

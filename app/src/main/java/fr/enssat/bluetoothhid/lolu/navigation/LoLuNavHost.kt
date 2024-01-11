@@ -7,18 +7,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.Home
+import fr.enssat.bluetoothhid.lolu.ui.home.HomeScreen
 
 @Composable
 fun LoLuNavHost(
+    modifier: Modifier = Modifier,
     navController: NavHostController
 ) {
     NavHost(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         navController = navController,
         startDestination = Home.route
     ) {
         composable(route = Home.route) {
-
+            HomeScreen()
         }
     }
 }
