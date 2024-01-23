@@ -25,19 +25,7 @@ fun LoLuTheme(content: @Composable () -> Unit) {
         primaryVariant = colorResource(id = R.color.lolu_primary_variant),
         background = colorResource(id = R.color.lolu_nuance_98),
         nuance100 = colorResource(id = R.color.lolu_nuance_100),
-        nuance98 = colorResource(id = R.color.lolu_nuance_98),
-        nuance92 = colorResource(id = R.color.lolu_nuance_92),
-        nuance90 = colorResource(id = R.color.lolu_nuance_90),
-        nuance85 = colorResource(id = R.color.lolu_nuance_85),
-        nuance70 = colorResource(id = R.color.lolu_nuance_70),
-        nuance55 = colorResource(id = R.color.lolu_nuance_55),
-        nuance35 = colorResource(id = R.color.lolu_nuance_35),
-        nuance15 = colorResource(id = R.color.lolu_nuance_15),
-        error = colorResource(id = R.color.lolu_error),
-        warning = colorResource(id = R.color.lolu_warning),
-        success = colorResource(id = R.color.lolu_success),
-        cableYellow = colorResource(id = R.color.lolu_cable_yellow),
-        cablePink = colorResource(id = R.color.lolu_cable_pink)
+        error = colorResource(id = R.color.lolu_error)
     )
 
     val selectionColors = remember(customColors.primary, customColors.background) {

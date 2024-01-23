@@ -21,7 +21,8 @@ fun LoLuButton(
     Button(
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(containerColor = type.backgroundColor),
-        onClick = onClick
+        onClick = onClick,
+        shape = type.shape
     ) {
         Text(
             fontWeight = FontWeight.Bold,
@@ -47,6 +48,12 @@ fun LoLuButtonPrev() {
             LoLuButton(
                 text = "Valider",
                 type = ButtonType.DIALOG_VALIDATE,
+                onClick = { }
+            )
+
+            LoLuButton(
+                text = "Button",
+                type = ButtonType.PRIMARY,
                 onClick = { }
             )
         }

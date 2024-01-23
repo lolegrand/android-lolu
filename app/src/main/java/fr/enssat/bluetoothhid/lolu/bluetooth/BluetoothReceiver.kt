@@ -6,8 +6,15 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class BluetoothReceiver : BroadcastReceiver() {
+
+    @Inject
+    lateinit var loLuBluetoothManager: LoLuBluetoothManager
+
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == BluetoothAdapter.ACTION_STATE_CHANGED) {
             when (intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR)) {
@@ -25,12 +32,8 @@ class BluetoothReceiver : BroadcastReceiver() {
             }
         }
 
-        if (intent.action == BluetoothDevice.ACTION_ACL_CONNECTED) {
-            numberOfDeviceConnected += 1
-        }
-
-        if (intent.action == BluetoothDevice.ACTION_ACL_DISCONNECTED && numberOfDeviceConnected > 0) {
-            numberOfDeviceConnected -= 1
+        if (intent.action == BluetoothDevice.ACTION_ACL_CONNECTED || intent.action == BluetoothDevice.ACTION_ACL_DISCONNECTED) {
+            loLuBluetoothManager.queryConnectedDevice()
         }
     }
 }

@@ -1,7 +1,6 @@
 package fr.enssat.bluetoothhid.lolu.ui.main
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -14,29 +13,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
-import fr.enssat.bluetoothhid.lolu.bluetooth.BluetoothConnectionStatus
 import fr.enssat.bluetoothhid.lolu.bluetooth.BluetoothStatus
-import fr.enssat.bluetoothhid.lolu.bluetooth.bluetoothConnectionState
 import fr.enssat.bluetoothhid.lolu.bluetooth.bluetoothState
 import fr.enssat.bluetoothhid.lolu.bluetooth.getBluetoothPermissionsToAskForCurrentVersion
 import fr.enssat.bluetoothhid.lolu.ext.enableBluetoothFeature
 import fr.enssat.bluetoothhid.lolu.ext.navigateToAppSettings
 import fr.enssat.bluetoothhid.lolu.navigation.LoLuNavHost
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuDialog
-import fr.enssat.bluetoothhid.lolu.ui.component.LoLuWaitingDialog
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    viewModel: MainViewModel = hiltViewModel()
+) {
     // Remember
     val navController = rememberNavController()
-    val bluetoothConnectionState by bluetoothConnectionState.collectAsStateWithLifecycle()
     val bluetoothState by bluetoothState.collectAsStateWithLifecycle()
     val bluetoothPermissionState: MultiplePermissionsState = rememberMultiplePermissionsState(
         permissions = getBluetoothPermissionsToAskForCurrentVersion()
@@ -45,13 +43,6 @@ fun MainScreen() {
         mutableStateOf(false)
     }
     val context = LocalContext.current
-
-    // Launched effect
-    if (bluetoothState == BluetoothStatus.OFF) {
-        Text(text = "BT is gone")
-    } else {
-        Text(text = "BT is up")
-    }
 
     // Dialog permission
     if (!bluetoothPermissionState.allPermissionsGranted) {
@@ -74,7 +65,7 @@ fun MainScreen() {
     }
 
     // Dialog bluetooth off
-    if (bluetoothPermissionState.allPermissionsGranted && bluetoothState == BluetoothStatus.OFF) {
+    /*
         LoLuDialog(
             title = "Bluetooth",
             subtitle = "Il s'emblerais que votre bluetooth soit désactiver, merci de l'activé.",
@@ -82,14 +73,7 @@ fun MainScreen() {
             onClickAction1 = { context.enableBluetoothFeature() },
             onDismiss = { }
         )
-    }
-
-    // Dialog bluetooth device connected
-    if (bluetoothPermissionState.allPermissionsGranted &&
-        bluetoothState == BluetoothStatus.ON &&
-        bluetoothConnectionState == BluetoothConnectionStatus.DISCONNECTED) {
-        LoLuWaitingDialog(title = "En attente de connection d'un appareil Bluetooth")
-    }
+    }*/
 
     // Content
     Scaffold(

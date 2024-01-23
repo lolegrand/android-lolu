@@ -20,7 +20,9 @@ fun LoLuNavHost(
         startDestination = Home.route
     ) {
         composable(route = Home.route) {
-            HomeScreen()
+            HomeScreen(
+                onNavigateToHid = { hid -> }
+            )
         }
     }
 }

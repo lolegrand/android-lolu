@@ -56,7 +56,6 @@ fun LoLuDialog(
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = title,
-                    color = LoLuAppTheme.colors.nuance15,
                     style = LoLuAppTheme.typography.h1
                 )
 
@@ -66,7 +65,6 @@ fun LoLuDialog(
                             .fillMaxWidth()
                             .padding(top = 3.dp),
                         text = it,
-                        color = LoLuAppTheme.colors.nuance15,
                         style = LoLuAppTheme.typography.p1
                     )
                 }
@@ -121,7 +119,6 @@ fun LoLuWaitingDialog(
                 modifier = Modifier.fillMaxWidth().padding(top = 24.dp).padding(horizontal = 20.dp),
                 textAlign = TextAlign.Center,
                 text = title,
-                color = LoLuAppTheme.colors.nuance15,
                 style = LoLuAppTheme.typography.h1
             )
 

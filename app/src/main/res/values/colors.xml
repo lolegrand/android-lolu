@@ -4,16 +4,5 @@
     <color name="lolu_primary_variant">#C4CEF3</color>
     <color name="lolu_nuance_100">#FFFFFF</color>
     <color name="lolu_nuance_98">#F7F9FA</color>
-    <color name="lolu_nuance_92">#E6E8EB</color>
-    <color name="lolu_nuance_90">#DCE1E5</color>
-    <color name="lolu_nuance_85">#D4D7D9</color>
-    <color name="lolu_nuance_70">#AFB1B2</color>
-    <color name="lolu_nuance_55">#84888C</color>
-    <color name="lolu_nuance_35">#525659</color>
-    <color name="lolu_nuance_15">#1B2026</color>
     <color name="lolu_error">#C62435</color>
-    <color name="lolu_warning">#EE7F00</color>
-    <color name="lolu_success">#48A291</color>
-    <color name="lolu_cable_yellow">#FCCC60</color>
-    <color name="lolu_cable_pink">#EC008D</color>
 </resources>

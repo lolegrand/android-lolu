@@ -4,8 +4,3 @@ enum class BluetoothStatus {
     ON,
     OFF
 }
-
-enum class BluetoothConnectionStatus {
-    CONNECTED,
-    DISCONNECTED
-}
