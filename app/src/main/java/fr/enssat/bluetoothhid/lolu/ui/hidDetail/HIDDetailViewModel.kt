@@ -36,6 +36,19 @@ class HIDDetailViewModel @Inject constructor(
         }
     }
 
+    // Function
+    fun deleteShortcut(shortcut: Shortcut) {
+        viewModelScope.launch {
+            shortcutRepository.deleteShortcut(shortcut)
+        }
+    }
+
+    fun deleteHID(hid: HID) {
+        viewModelScope.launch {
+            hidRepository.deleteHID(hid)
+        }
+    }
+
     // State object
     sealed interface HIDDetailState {
         data object Loading : HIDDetailState

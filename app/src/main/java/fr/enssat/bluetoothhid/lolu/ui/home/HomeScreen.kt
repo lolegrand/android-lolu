@@ -2,6 +2,8 @@ package fr.enssat.bluetoothhid.lolu.ui.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,13 +18,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import fr.enssat.bluetoothhid.data.vo.HID
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuLoader
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeBottomSheetContent
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeContent
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeEmptyView
+import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,16 +53,26 @@ fun HomeScreen(
         }
 
         is HomeViewModel.HomeState.Loaded -> {
-            if (state.HIDList.isEmpty()) {
-                HomeEmptyView {
-                    displayHIDCreationBottomSheet = true
-                }
-            } else {
-                HomeContent(
-                    HIDList = state.HIDList,
-                    onHIDSelected = { hid -> onNavigateToHid(hid) },
-                    onCreateNewHid = { displayHIDCreationBottomSheet = true }
+            Column {
+                Text(
+                    modifier = Modifier
+                        .padding(vertical = 20.dp)
+                        .fillMaxWidth(),
+                    text = "LoLu's Project",
+                    style = LoLuAppTheme.typography.h1,
+                    textAlign = TextAlign.Center
                 )
+                if (state.HIDList.isEmpty()) {
+                    HomeEmptyView {
+                        displayHIDCreationBottomSheet = true
+                    }
+                } else {
+                    HomeContent(
+                        HIDList = state.HIDList,
+                        onHIDSelected = { hid -> onNavigateToHid(hid) },
+                        onCreateNewHid = { displayHIDCreationBottomSheet = true }
+                    )
+                }
             }
         }
     }

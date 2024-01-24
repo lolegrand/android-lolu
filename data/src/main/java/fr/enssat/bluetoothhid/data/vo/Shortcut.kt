@@ -6,9 +6,13 @@ import androidx.room.PrimaryKey
 @Entity
 data class Shortcut(
     val hidID: Int,
-    val name: String,
     val icon: String,
-    val color: String
+    val backgroundRed: Float,
+    val backgroundGreen: Float,
+    val backgroundBlue: Float,
+    val iconRed: Float,
+    val iconGreen: Float,
+    val iconBlue: Float,
 ) {
     @PrimaryKey(autoGenerate = true)
     var id = 0

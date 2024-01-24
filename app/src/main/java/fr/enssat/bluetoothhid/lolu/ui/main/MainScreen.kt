@@ -1,10 +1,12 @@
 package fr.enssat.bluetoothhid.lolu.ui.main
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -15,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
@@ -25,6 +28,7 @@ import fr.enssat.bluetoothhid.lolu.bluetooth.getBluetoothPermissionsToAskForCurr
 import fr.enssat.bluetoothhid.lolu.ext.enableBluetoothFeature
 import fr.enssat.bluetoothhid.lolu.ext.navigateToAppSettings
 import fr.enssat.bluetoothhid.lolu.navigation.LoLuNavHost
+import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.Home
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuDialog
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 
@@ -35,6 +39,7 @@ fun MainScreen(
 ) {
     // Remember
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
     val bluetoothState by bluetoothState.collectAsStateWithLifecycle()
     val bluetoothPermissionState: MultiplePermissionsState = rememberMultiplePermissionsState(
         permissions = getBluetoothPermissionsToAskForCurrentVersion()
@@ -76,18 +81,7 @@ fun MainScreen(
     }*/
 
     // Content
-    Scaffold(
-        topBar = {
-            Text(
-                modifier = Modifier
-                    .padding(vertical = 20.dp)
-                    .fillMaxWidth(),
-                text = "LoLu's Project",
-                style = LoLuAppTheme.typography.h1,
-                textAlign = TextAlign.Center
-            )
-        }
-    ) { contentPadding ->
+    Scaffold { contentPadding ->
         LoLuNavHost(
             modifier = Modifier.padding(contentPadding),
             navController = navController

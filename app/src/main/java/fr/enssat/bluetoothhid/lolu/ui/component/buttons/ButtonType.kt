@@ -11,7 +11,8 @@ import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 enum class ButtonType {
     DIALOG_ABORT,
     DIALOG_VALIDATE,
-    PRIMARY
+    PRIMARY,
+    DELETE
 }
 
 val ButtonType.textColor: Color
@@ -20,6 +21,7 @@ val ButtonType.textColor: Color
         ButtonType.DIALOG_ABORT -> Color.Black
         ButtonType.DIALOG_VALIDATE -> LoLuAppTheme.colors.primary
         ButtonType.PRIMARY -> LoLuAppTheme.colors.nuance100
+        ButtonType.DELETE -> LoLuAppTheme.colors.nuance100
     }
 
 
@@ -29,6 +31,7 @@ val ButtonType.backgroundColor: Color
         ButtonType.DIALOG_ABORT,
         ButtonType.DIALOG_VALIDATE -> Color.Transparent
         ButtonType.PRIMARY -> LoLuAppTheme.colors.primary
+        ButtonType.DELETE -> LoLuAppTheme.colors.error
     }
 
 val ButtonType.shape: Shape
@@ -36,4 +39,5 @@ val ButtonType.shape: Shape
         ButtonType.DIALOG_ABORT,
         ButtonType.DIALOG_VALIDATE -> RectangleShape
         ButtonType.PRIMARY -> RoundedCornerShape(5.dp)
+        ButtonType.DELETE -> RoundedCornerShape(5.dp)
     }
