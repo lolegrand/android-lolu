@@ -9,9 +9,11 @@ import fr.enssat.bluetoothhid.data.vo.Shortcut
 @Dao
 interface ShortcutDao {
 
+    // Insert
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(shortcut: Shortcut)
 
+    // Delete
     @Delete
     suspend fun delete(shortcut: Shortcut)
 

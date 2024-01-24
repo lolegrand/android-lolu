@@ -1,5 +1,5 @@
 package fr.enssat.bluetoothhid.lolu.navigation.destination
 
-sealed interface AbstractArgs {
+interface AbstractArgs {
     object NoArgs : AbstractArgs
 }

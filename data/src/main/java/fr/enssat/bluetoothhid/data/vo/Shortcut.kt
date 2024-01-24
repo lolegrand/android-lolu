@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Shortcut(
+    val hidID: Int,
     val name: String,
     val icon: String,
     val color: String

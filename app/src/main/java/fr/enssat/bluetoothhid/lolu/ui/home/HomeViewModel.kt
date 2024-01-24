@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.enssat.bluetoothhid.data.repository.HIDRepository
 import fr.enssat.bluetoothhid.data.vo.HID
-import fr.enssat.bluetoothhid.lolu.bluetooth.LoLuBluetoothManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +18,7 @@ class HomeViewModel @Inject constructor(
     // ViewModel init
     init {
         viewModelScope.launch {
-            hidRepository.watchHDI().collect { hidList ->
+            hidRepository.watchHID().collect { hidList ->
                 _state.emit(HomeState.Loaded(hidList))
             }
         }

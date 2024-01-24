@@ -8,5 +8,5 @@ data class HID(
     val name: String
 ) {
     @PrimaryKey(autoGenerate = true)
-    var id = 0
+    var id : Int = 0
 }
