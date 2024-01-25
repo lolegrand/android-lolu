@@ -29,10 +29,7 @@ fun HIDTile(
     Box (
         modifier = Modifier.fillMaxWidth()
             .height(50.dp)
-            .clip(RoundedCornerShape(5.dp))
-            .background(
-                color = LoLuAppTheme.colors.primary
-            )
+            .background(color = LoLuAppTheme.colors.background)
             .clickable { onClick() },
         contentAlignment = Alignment.CenterStart
     ) {
@@ -40,7 +37,7 @@ fun HIDTile(
             modifier = Modifier.padding(10.dp),
             text = hid.name,
             style = LoLuAppTheme.typography.h2,
-            color = LoLuAppTheme.colors.nuance100,
+            color = LoLuAppTheme.colors.primary,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
