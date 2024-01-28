@@ -39,7 +39,6 @@ fun MainScreen(
 ) {
     // Remember
     val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
     val bluetoothState by bluetoothState.collectAsStateWithLifecycle()
     val bluetoothPermissionState: MultiplePermissionsState = rememberMultiplePermissionsState(
         permissions = getBluetoothPermissionsToAskForCurrentVersion()
@@ -70,7 +69,7 @@ fun MainScreen(
     }
 
     // Dialog bluetooth off
-    /*
+    if (bluetoothPermissionState.allPermissionsGranted && bluetoothState == BluetoothStatus.OFF) {
         LoLuDialog(
             title = "Bluetooth",
             subtitle = "Il s'emblerais que votre bluetooth soit désactiver, merci de l'activé.",
@@ -78,7 +77,7 @@ fun MainScreen(
             onClickAction1 = { context.enableBluetoothFeature() },
             onDismiss = { }
         )
-    }*/
+    }
 
     // Content
     Scaffold { contentPadding ->

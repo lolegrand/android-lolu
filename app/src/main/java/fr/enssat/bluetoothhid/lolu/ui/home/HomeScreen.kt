@@ -27,7 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import fr.enssat.bluetoothhid.data.vo.HID
+import fr.enssat.bluetoothhid.lolu.bluetooth.BluetoothViewModel
+import fr.enssat.bluetoothhid.lolu.bluetooth.LoLuBluetoothManager
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuLoader
+import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeBluetoothContent
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeBottomSheetContent
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeContent
 import fr.enssat.bluetoothhid.lolu.ui.home.component.HomeEmptyView
@@ -44,6 +47,7 @@ private val tabDate = listOf(
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
+    bluetoothViewModel: BluetoothViewModel = hiltViewModel(),
     onNavigateToHid: (HID) -> Unit
 ) {
     // State
@@ -128,7 +132,9 @@ fun HomeScreen(
                             }
                         }
                         1 -> {
-                            // TODO Display bluetooth
+                            HomeBluetoothContent(
+                                bluetoothViewModel = bluetoothViewModel
+                            )
                         }
                     }
                 }

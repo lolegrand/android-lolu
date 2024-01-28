@@ -31,9 +31,5 @@ class BluetoothReceiver : BroadcastReceiver() {
                 }
             }
         }
-
-        if (intent.action == BluetoothDevice.ACTION_ACL_CONNECTED || intent.action == BluetoothDevice.ACTION_ACL_DISCONNECTED) {
-            loLuBluetoothManager.queryConnectedDevice()
-        }
     }
 }

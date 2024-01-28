@@ -12,6 +12,7 @@ enum class ButtonType {
     DIALOG_ABORT,
     DIALOG_VALIDATE,
     PRIMARY,
+    PRIMARY_REVERSED,
     DELETE
 }
 
@@ -22,6 +23,7 @@ val ButtonType.textColor: Color
         ButtonType.DIALOG_VALIDATE -> LoLuAppTheme.colors.primary
         ButtonType.PRIMARY -> LoLuAppTheme.colors.nuance100
         ButtonType.DELETE -> LoLuAppTheme.colors.nuance100
+        ButtonType.PRIMARY_REVERSED -> LoLuAppTheme.colors.primary
     }
 
 
@@ -32,6 +34,7 @@ val ButtonType.backgroundColor: Color
         ButtonType.DIALOG_VALIDATE -> Color.Transparent
         ButtonType.PRIMARY -> LoLuAppTheme.colors.primary
         ButtonType.DELETE -> LoLuAppTheme.colors.error
+        ButtonType.PRIMARY_REVERSED -> LoLuAppTheme.colors.nuance100
     }
 
 val ButtonType.shape: Shape
@@ -40,4 +43,5 @@ val ButtonType.shape: Shape
         ButtonType.DIALOG_VALIDATE -> RectangleShape
         ButtonType.PRIMARY -> RoundedCornerShape(5.dp)
         ButtonType.DELETE -> RoundedCornerShape(5.dp)
+        ButtonType.PRIMARY_REVERSED -> RoundedCornerShape(5.dp)
     }
