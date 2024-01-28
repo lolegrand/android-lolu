@@ -8,6 +8,7 @@ import fr.enssat.bluetoothhid.data.repository.HIDRepository
 import fr.enssat.bluetoothhid.data.repository.ShortcutRepository
 import fr.enssat.bluetoothhid.data.vo.HID
 import fr.enssat.bluetoothhid.data.vo.Shortcut
+import fr.enssat.bluetoothhid.lolu.bluetooth.LoLuBluetoothManager
 import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.HIDDetail
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HIDDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    private val loLuBluetoothManager: LoLuBluetoothManager,
     private val hidRepository: HIDRepository,
     private val shortcutRepository: ShortcutRepository
 ): ViewModel() {
@@ -43,10 +45,8 @@ class HIDDetailViewModel @Inject constructor(
         }
     }
 
-    fun deleteHID(hid: HID) {
-        viewModelScope.launch {
-            hidRepository.deleteHID(hid)
-        }
+    fun sendShortcut(shortcut: Shortcut) {
+        loLuBluetoothManager.sendShortcut(shortcut)
     }
 
     // State object

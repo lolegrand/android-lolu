@@ -31,7 +31,7 @@ fun LoLuButton(
         modifier = buttonModifier,
         colors = ButtonDefaults.buttonColors(containerColor = type.backgroundColor),
         onClick = onClick,
-        shape = type.shape
+        shape = type.shape,
     ) {
         Text(
             fontWeight = FontWeight.Bold,
@@ -39,7 +39,6 @@ fun LoLuButton(
             style = LoLuAppTheme.typography.p1,
             text = text
         )
-        
         trailing?.invoke()
     }
 }

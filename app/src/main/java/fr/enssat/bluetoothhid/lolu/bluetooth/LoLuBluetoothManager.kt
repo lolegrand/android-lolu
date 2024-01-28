@@ -12,10 +12,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
+import android.view.KeyEvent
 import androidx.compose.runtime.collectAsState
 import androidx.core.content.ContextCompat.RECEIVER_VISIBLE_TO_INSTANT_APPS
 import androidx.core.content.ContextCompat.registerReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
+import fr.enssat.bluetoothhid.data.vo.Shortcut
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.util.concurrent.Executor
@@ -139,6 +141,7 @@ class LoLuBluetoothManager @Inject constructor(
         registerReceiver(context, receiver, filter, RECEIVER_VISIBLE_TO_INSTANT_APPS)
     }
 
+    // Function
     fun startDiscovering() {
         _discoveredDevices.value = listOf()
         bluetoothAdapter?.startDiscovery()
@@ -155,5 +158,17 @@ class LoLuBluetoothManager @Inject constructor(
 
     fun connectToDevice(bluetoothDevice: BluetoothDevice) {
         bluetoothHidDevice?.connect(bluetoothDevice)
+    }
+
+    fun sendShortcut(shortcut: Shortcut) {
+        Log.wtf("Louis", "Trying to send report")
+        val connectedDevice = connectedDevice.value
+        val btHidDevice = bluetoothHidDevice
+
+        if (connectedDevice != null && btHidDevice != null) {
+            Log.wtf("Louis", "Sending")
+            btHidDevice.sendReport(connectedDevice, 8, byteArrayOf(0, 0, 5)) // Send b
+            btHidDevice.sendReport(connectedDevice, 8, byteArrayOf(0, 0, 0)) // release b
+        }
     }
 }

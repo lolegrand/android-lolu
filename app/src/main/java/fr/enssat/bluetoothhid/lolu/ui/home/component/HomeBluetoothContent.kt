@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -132,25 +133,30 @@ fun HomeBluetoothContent(
                 type = ButtonType.PRIMARY
             )
         } else {
-            LoLuButton(
+            Row (
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 30.dp, top = 20.dp)
                     .height(50.dp),
-                text = "Stop Discovering",
-                onClick = {
-                    bluetoothViewModel.stopDiscovering()
-                },
-                type = ButtonType.PRIMARY_REVERSED,
-                trailing = {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(30.dp).padding(start = 20.dp),
-                        color = LoLuAppTheme.colors.primary,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LoLuButton(
+                    modifier = Modifier
+                        .weight(1f),
+                    text = "Stop Discovering",
+                    onClick = {
+                        bluetoothViewModel.stopDiscovering()
+                    },
+                    type = ButtonType.PRIMARY_REVERSED
+                )
 
-                    )
-                }
-            )
+                CircularProgressIndicator(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    color = LoLuAppTheme.colors.primary,
+                )
+            }
+
         }
     }
 }
