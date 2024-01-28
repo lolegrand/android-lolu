@@ -127,7 +127,10 @@ fun HomeScreen(
                                 HomeContent(
                                     HIDList = state.HIDList,
                                     onHIDSelected = { hid -> onNavigateToHid(hid) },
-                                    onCreateNewHid = { displayHIDCreationBottomSheet = true }
+                                    onCreateNewHid = { displayHIDCreationBottomSheet = true },
+                                    onDeleteHID = {
+                                        viewModel.deleteHID(it)
+                                    }
                                 )
                             }
                         }

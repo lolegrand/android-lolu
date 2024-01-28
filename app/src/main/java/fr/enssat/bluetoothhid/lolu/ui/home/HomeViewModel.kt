@@ -31,6 +31,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun deleteHID(hid: HID) {
+        viewModelScope.launch {
+            hidRepository.deleteHID(hid)
+        }
+    }
+
     // State management
     private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state by lazy { _state.asStateFlow() }

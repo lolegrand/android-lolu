@@ -2,13 +2,18 @@ package fr.enssat.bluetoothhid.lolu.ui.home.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,20 +31,28 @@ fun HIDTile(
     hid: HID,
     onClick: () -> Unit
 ) {
-    Box (
-        modifier = Modifier.fillMaxWidth()
+    Row (
+        modifier = Modifier
+            .background(color = LoLuAppTheme.colors.nuance100)
+            .fillMaxWidth()
             .height(50.dp)
-            .background(color = LoLuAppTheme.colors.background)
             .clickable { onClick() },
-        contentAlignment = Alignment.CenterStart
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier.padding(10.dp).weight(1f),
             text = hid.name,
             style = LoLuAppTheme.typography.h2,
             color = LoLuAppTheme.colors.primary,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
+        )
+
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowRight,
+            contentDescription = null,
+            tint = LoLuAppTheme.colors.primary
         )
     }
 }
