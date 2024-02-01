@@ -80,6 +80,9 @@ dependencies {
     implementation project(':data')
     kapt 'com.google.dagger:hilt-compiler:2.46.1'
 
+    // Kotlin reflexion
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.10"
+
     // Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

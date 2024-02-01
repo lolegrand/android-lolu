@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +25,7 @@ import fr.enssat.bluetoothhid.data.vo.Shortcut
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTile
+import fr.enssat.bluetoothhid.lolu.ui.materialIcons
 
 @Composable
 fun HIDDetailContent(
@@ -53,7 +55,7 @@ fun HIDDetailContent(
                 ShortcutTile(
                     backgroundColor = Color(shortcut.backgroundRed, shortcut.backgroundGreen, shortcut.backgroundBlue),
                     iconColor = Color(shortcut.iconRed, shortcut.iconGreen, shortcut.iconBlue),
-                    icon = Icons.Filled.FavoriteBorder,
+                    icon = materialIcons[shortcut.icon] ?: Icons.Default.Face,
                     onClick = {
                         if (deleteModeActivated) {
                             onDeleteShortcut(shortcut)

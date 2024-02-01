@@ -11,8 +11,8 @@ fun CreateShortcutScreen(
 ) {
 
     CreateShortcutContent(
-        onCreateValidate = { bgRed, bgGreen, bgBlue, icRed, icGreen, icBlue ->
-            viewModel.createNewIcon(bgRed, bgGreen, bgBlue, icRed, icGreen, icBlue)
+        onCreateValidate = { bgRed, bgGreen, bgBlue, icRed, icGreen, icBlue, iconName ->
+            viewModel.createNewIcon(bgRed, bgGreen, bgBlue, icRed, icGreen, icBlue, iconName)
             onCreationCompleted()
         }
     )

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTile
+import fr.enssat.bluetoothhid.lolu.ui.materialIcons
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuTheme
 
@@ -37,9 +39,13 @@ private fun computeColor(red: Float, green: Float, blue: Float): Color {
 
 @Composable
 fun CreateShortcutContent(
-    onCreateValidate: (Float, Float, Float, Float, Float, Float) -> Unit
+    onCreateValidate: (Float, Float, Float, Float, Float, Float, String) -> Unit
 ) {
     // State
+    var selectedIcon by remember { mutableStateOf("AccountBox") }
+    var displayIconSelector by remember {
+        mutableStateOf(false)
+    }
     var outlineRed by remember { mutableFloatStateOf(0.0f) }
     var outlineGreen by remember { mutableFloatStateOf(0.0f) }
     var outlineBlue by remember { mutableFloatStateOf(0.0f) }
@@ -68,8 +74,8 @@ fun CreateShortcutContent(
             modifier = Modifier.shadow(50.dp),
             backgroundColor = backgroundColor,
             iconColor = outlineColor,
-            icon = Icons.Filled.FavoriteBorder,
-            onClick = { }
+            icon = materialIcons[selectedIcon] ?: Icons.Default.Face,
+            onClick = { displayIconSelector = true }
         )
 
         Spacer(modifier = Modifier.height(50.dp))
@@ -171,11 +177,13 @@ fun CreateShortcutContent(
             )
         )
 
-        Spacer(modifier = Modifier.height(50.dp))
-
+        Spacer(modifier = Modifier.weight(1f))
 
         LoLuButton(
-            modifier = Modifier.fillMaxWidth().height(50.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(bottom = 10.dp),
             text = "Valider",
             onClick = {
                 onCreateValidate(
@@ -185,9 +193,22 @@ fun CreateShortcutContent(
                     outlineColor.red,
                     outlineColor.green,
                     outlineColor.blue,
+                    selectedIcon
                 )
             },
             type = ButtonType.PRIMARY
+        )
+    }
+
+    if (displayIconSelector) {
+        IconSelectorDialog(
+            onDismiss = {
+                displayIconSelector = false
+            },
+            onIconSelected = {
+                selectedIcon = it
+                displayIconSelector = false
+            }
         )
     }
 }
@@ -197,6 +218,6 @@ fun CreateShortcutContent(
 @Composable
 fun CreateShortcutContentPreview() {
     LoLuTheme {
-        CreateShortcutContent({ _, _, _, _, _, _ -> })
+        CreateShortcutContent({ _, _, _, _, _, _, _ -> })
     }
 }

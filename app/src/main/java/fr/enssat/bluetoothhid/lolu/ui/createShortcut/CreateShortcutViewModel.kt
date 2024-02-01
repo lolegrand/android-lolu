@@ -20,12 +20,12 @@ class CreateShortcutViewModel @Inject constructor(
     private val hidID: Int = savedStateHandle.get<Int>(CreateShortcut.HID_ID) ?: 0
 
     // Function
-    fun createNewIcon(bgRed: Float, bgGreen: Float, bgBlue: Float, icRed: Float, icGreen: Float, icBlue: Float) {
+    fun createNewIcon(bgRed: Float, bgGreen: Float, bgBlue: Float, icRed: Float, icGreen: Float, icBlue: Float, iconName: String) {
         viewModelScope.launch {
             shortcutRepository.addShortcut(
                 Shortcut(
                     hidID = hidID,
-                    icon = "TODO",
+                    icon = iconName,
                     backgroundRed = bgRed,
                     backgroundGreen = bgGreen,
                     backgroundBlue = bgBlue,

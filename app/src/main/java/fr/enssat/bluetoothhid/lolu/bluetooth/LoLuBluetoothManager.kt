@@ -145,7 +145,6 @@ class LoLuBluetoothManager @Inject constructor(
     fun startDiscovering() {
         _discoveredDevices.value = listOf()
         bluetoothAdapter?.startDiscovery()
-
     }
 
     fun stopDiscovering() {
