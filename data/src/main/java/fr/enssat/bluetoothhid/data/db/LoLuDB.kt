@@ -12,7 +12,7 @@ import fr.enssat.bluetoothhid.data.vo.Shortcut
         HID::class,
         Shortcut::class
     ],
-    version = 3
+    version = 4
 )
 abstract class LoLuDB : RoomDatabase() {
 

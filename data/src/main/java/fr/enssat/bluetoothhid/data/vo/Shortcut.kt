@@ -13,6 +13,8 @@ data class Shortcut(
     val iconRed: Float,
     val iconGreen: Float,
     val iconBlue: Float,
+    val keyCode: String,
+    val modifier: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var id = 0

@@ -2,14 +2,19 @@ package fr.enssat.bluetoothhid.lolu.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.CreateShortcut
 import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.HIDDetail
 import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.Home
+import fr.enssat.bluetoothhid.lolu.navigation.destination.impl.SelectShortcut
 import fr.enssat.bluetoothhid.lolu.ui.createShortcut.CreateShortcutScreen
+import fr.enssat.bluetoothhid.lolu.ui.createShortcut.CreateShortcutViewModel
+import fr.enssat.bluetoothhid.lolu.ui.createShortcut.SelectShortcutScreen
 import fr.enssat.bluetoothhid.lolu.ui.hidDetail.HIDDetailScreen
 import fr.enssat.bluetoothhid.lolu.ui.home.HomeScreen
 
@@ -54,6 +59,24 @@ fun LoLuNavHost(
         ) {
             CreateShortcutScreen(
                 onCreationCompleted = {
+                    navController.navigate(SelectShortcut.route)
+
+                }
+            )
+        }
+
+        composable(
+            route = SelectShortcut.route,
+            arguments = SelectShortcut.args()
+        ) { navBackStackEntry ->
+            val parentEntry = remember(navBackStackEntry) {
+                navController.getBackStackEntry(CreateShortcut.route)
+            }
+            val createShortcutViewModel = hiltViewModel<CreateShortcutViewModel>(parentEntry)
+
+            SelectShortcutScreen(
+                createShortcutViewModel,
+                onShortcutCreationFinished = {
                     navController.popBackStack(route = HIDDetail.route, inclusive = false)
                 }
             )

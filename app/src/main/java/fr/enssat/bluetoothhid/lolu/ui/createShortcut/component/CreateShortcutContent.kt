@@ -182,8 +182,8 @@ fun CreateShortcutContent(
         LoLuButton(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp)
-                .padding(bottom = 10.dp),
+                .padding(bottom = 30.dp)
+                .height(50.dp),
             text = "Valider",
             onClick = {
                 onCreateValidate(

@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat.RECEIVER_VISIBLE_TO_INSTANT_APPS
 import androidx.core.content.ContextCompat.registerReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
 import fr.enssat.bluetoothhid.data.vo.Shortcut
+import fr.enssat.bluetoothhid.lolu.ui.KeyEventMap
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.util.concurrent.Executor
@@ -91,6 +92,7 @@ class LoLuBluetoothManager @Inject constructor(
         override fun onConnectionStateChanged(device: BluetoothDevice, state: Int) {
             super.onConnectionStateChanged(device, state)
             if (state == BluetoothProfile.STATE_CONNECTED) {
+                stopDiscovering()
                 _connectedDevice.value = device
                 bluetoothHidDevice?.connect(device)
             } else {
@@ -160,14 +162,18 @@ class LoLuBluetoothManager @Inject constructor(
     }
 
     fun sendShortcut(shortcut: Shortcut) {
-        Log.wtf("Louis", "Trying to send report")
         val connectedDevice = connectedDevice.value
         val btHidDevice = bluetoothHidDevice
 
         if (connectedDevice != null && btHidDevice != null) {
-            Log.wtf("Louis", "Sending")
-            btHidDevice.sendReport(connectedDevice, 8, byteArrayOf(0, 0, 5)) // Send b
-            btHidDevice.sendReport(connectedDevice, 8, byteArrayOf(0, 0, 0)) // release b
+            val payload = byteArrayOf(
+                shortcut.modifier.toByte(),
+                0,
+                KeyEventMap[KeyEvent.keyCodeFromString(shortcut.keyCode)]!!.toByte()
+            )
+
+            btHidDevice.sendReport(connectedDevice, 8, payload) // Send event
+            btHidDevice.sendReport(connectedDevice, 8, byteArrayOf(0, 0, 0)) // release event
         }
     }
 }
