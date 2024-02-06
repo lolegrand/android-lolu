@@ -22,20 +22,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTile
 import fr.enssat.bluetoothhid.lolu.ui.materialIcons
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuTheme
-
-private fun computeColor(red: Float, green: Float, blue: Float): Color {
-    return Color(red, green, blue)
-}
-
 
 @Composable
 fun CreateShortcutContent(
@@ -54,11 +51,11 @@ fun CreateShortcutContent(
     var backgroundBlue by remember { mutableFloatStateOf(1.0f) }
 
     val outlineColor by remember(outlineRed, outlineBlue, outlineGreen) {
-        mutableStateOf(computeColor(outlineRed, outlineGreen, outlineBlue))
+        mutableStateOf(Color(outlineRed, outlineGreen, outlineBlue))
     }
 
     val backgroundColor by remember(backgroundRed, backgroundGreen, backgroundBlue) {
-        mutableStateOf(computeColor(backgroundRed, backgroundGreen, backgroundBlue))
+        mutableStateOf(Color(backgroundRed, backgroundGreen, backgroundBlue))
     }
 
     // View
@@ -81,7 +78,7 @@ fun CreateShortcutContent(
         Spacer(modifier = Modifier.height(50.dp))
 
         Text(
-            text = "Couleur de votre shortcut",
+            text = stringResource(id = R.string.create_shortcut_icon_color),
             style = LoLuAppTheme.typography.h2
         )
 
@@ -130,7 +127,7 @@ fun CreateShortcutContent(
         Spacer(modifier = Modifier.height(50.dp))
 
         Text(
-            text = "Couleur du background de votre shortcut",
+            text = stringResource(id = R.string.create_shortcut_bg_color),
             style = LoLuAppTheme.typography.h2,
             textAlign = TextAlign.Center
         )
@@ -184,7 +181,7 @@ fun CreateShortcutContent(
                 .fillMaxWidth()
                 .padding(bottom = 30.dp)
                 .height(50.dp),
-            text = "Valider",
+            text = stringResource(id = R.string.create_shortcut_validate),
             onClick = {
                 onCreateValidate(
                     backgroundColor.red,

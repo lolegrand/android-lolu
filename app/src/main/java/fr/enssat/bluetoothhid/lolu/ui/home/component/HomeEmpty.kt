@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
@@ -25,13 +27,15 @@ fun HomeEmptyView(
     onCreateNewHid : () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().padding(20.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
 
         Text(
-            text = "Apparement, vous n'avez pas encore créer de HID. Créez en un ci-dessous.",
+            text = stringResource(id = R.string.home_empty_message),
             style = LoLuAppTheme.typography.h2,
             textAlign = TextAlign.Center
         )
@@ -39,8 +43,10 @@ fun HomeEmptyView(
         Spacer(modifier = Modifier.height(25.dp))
 
         LoLuButton(
-            modifier = Modifier.fillMaxWidth(.95f).height(50.dp),
-            text = "Créer un HID",
+            modifier = Modifier
+                .fillMaxWidth(.95f)
+                .height(50.dp),
+            text = stringResource(id = R.string.home_empty_button),
             onClick = onCreateNewHid,
             type = ButtonType.PRIMARY
         )

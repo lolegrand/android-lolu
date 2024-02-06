@@ -34,10 +34,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.enssat.bluetoothhid.data.vo.HID
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuDialog
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
@@ -132,7 +134,7 @@ fun HomeContent(
                 .padding(horizontal = 20.dp)
                 .padding(bottom = 30.dp, top = 20.dp)
                 .height(50.dp),
-            text = "Créer un nouvel HID",
+            text = stringResource(id = R.string.home_create_new_hid),
             onClick = onCreateNewHid,
             type = ButtonType.PRIMARY
         )
@@ -140,13 +142,13 @@ fun HomeContent(
 
     if (deleteHid != null) {
         LoLuDialog(
-            title = "Etes-vous sur de vouloir supprimer cette HID ?",
-            actionText1 = "Oui",
+            title = stringResource(id = R.string.home_delete_hid_title),
+            actionText1 = stringResource(id = R.string.home_delete_hid_confirm),
             onClickAction1 = {
                 onDeleteHID(deleteHid!!)
                 deleteHid = null
             },
-            actionText2 = "Non",
+            actionText2 = stringResource(id = R.string.home_delete_hid_abord),
             onClickAction2 = {
                 deleteHid = null
             },

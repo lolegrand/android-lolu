@@ -20,8 +20,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.KeyEventMap
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuDropdownSelector
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuRadioButton
@@ -31,7 +32,6 @@ import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTile
 import fr.enssat.bluetoothhid.lolu.ui.createShortcut.CreateShortcutViewModel
 import fr.enssat.bluetoothhid.lolu.ui.materialIcons
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
-import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuTheme
 
 @Composable
 fun SelectShortcutContent(
@@ -94,7 +94,7 @@ fun SelectShortcutContent(
 
         Text(
             color = LoLuAppTheme.colors.primary,
-            text = "Selectionnez un modifier",
+            text = stringResource(id = R.string.select_shortcut_modifier),
             style = LoLuAppTheme.typography.h1,
         )
 
@@ -160,7 +160,7 @@ fun SelectShortcutContent(
 
         Text(
             color = LoLuAppTheme.colors.primary,
-            text = "Selectionnez une touche",
+            text = stringResource(id = R.string.select_shortcut_touch),
             style = LoLuAppTheme.typography.h1,
         )
 
@@ -180,7 +180,7 @@ fun SelectShortcutContent(
                 .padding(bottom = 30.dp)
                 .padding(horizontal = 25.dp)
                 .height(50.dp),
-            text = "Valider",
+            text = stringResource(id = R.string.select_shortcut_validate),
             onClick = onCompleteShortcut,
             type = ButtonType.PRIMARY
         )

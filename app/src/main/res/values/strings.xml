@@ -1,3 +1,43 @@
 <resources>
+    <!-- App name -->
     <string name="app_name">LoLu</string>
+
+    <string name="permission_dialog_title">Permission</string>
+    <string name="permission_dialog_subtitle">L\'application à besoin de votre permission pour utiliser le bluetooth.</string>
+    <string name="permission_dialog_validate">Compris</string>
+
+    <string name="bluetooth_dialog_title">Bluetooth</string>
+    <string name="bluetooth_dialog_subtitle">Il s\'emblerais que votre bluetooth soit désactiver, merci de l\'activé.</string>
+    <string name="bluetooth_dialog_validate">Compris</string>
+
+    <string name="home_title">LoLu\'s Project</string>
+    <string name="home_empty_message">Apparement, vous n\'avez pas encore créer de HID. Créez en un ci-dessous.</string>
+    <string name="home_empty_button">Créer un HID</string>
+    <string name="home_create_new_hid">Créer un nouvel HID</string>
+    <string name="home_delete_hid_title">Etes-vous sur de vouloir supprimer cette HID ?</string>
+    <string name="home_delete_hid_confirm">Oui</string>
+    <string name="home_delete_hid_abord">Non</string>
+    <string name="home_bottom_sheet_title">Renseignez ici le nom de votre tout nouvel HID</string>
+    <string name="home_bottom_sheet_placeholder">Go XLR ...</string>
+    <string name="home_bottom_sheet_error_msg">Le nom ne peux pas être vide</string>
+    <string name="home_bottom_sheet_validate">Valider</string>
+
+    <string name="home_bt_no_device_found">Aucun appareil connecté</string>
+    <string name="home_bt_connected_to">Connecté à : </string>
+    <string name="home_bt_start_discovering">Start Discovering</string>
+    <string name="home_bt_stop_discovering">Stop Discovering</string>
+
+    <string name="hid_detail_empty_message">Il sembelrait que vous n\'aillez pas encore de shotcut. Créez-en un !</string>
+    <string name="hid_detail_create_shortcut">Créer un nouveau shortcut</string>
+    <string name="hid_detail_delete_shortcut">Supprimer des shortcut</string>
+    <string name="hid_detail_end">Fin</string>
+
+    <string name="create_shortcut_icon_color">Couleur de votre shortcut</string>
+    <string name="create_shortcut_bg_color">Couleur du background de votre shortcut</string>
+    <string name="create_shortcut_validate">Valider</string>
+
+    <string name="select_shortcut_modifier">Selectionnez un modifier</string>
+    <string name="select_shortcut_touch">Selectionnez une touche</string>
+    <string name="select_shortcut_validate">Valider</string>
+
 </resources>

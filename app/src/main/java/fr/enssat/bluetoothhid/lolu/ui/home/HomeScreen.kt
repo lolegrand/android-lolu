@@ -23,10 +23,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import fr.enssat.bluetoothhid.data.vo.HID
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.bluetooth.BluetoothViewModel
 import fr.enssat.bluetoothhid.lolu.bluetooth.LoLuBluetoothManager
 import fr.enssat.bluetoothhid.lolu.ui.component.LoLuLoader
@@ -73,7 +75,7 @@ fun HomeScreen(
                     modifier = Modifier
                         .padding(vertical = 20.dp)
                         .fillMaxWidth(),
-                    text = "LoLu's Project",
+                    text = stringResource(id = R.string.home_title),
                     style = LoLuAppTheme.typography.h1,
                     textAlign = TextAlign.Center
                 )

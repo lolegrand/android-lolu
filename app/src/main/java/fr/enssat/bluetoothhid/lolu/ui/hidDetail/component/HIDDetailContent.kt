@@ -20,8 +20,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import fr.enssat.bluetoothhid.data.vo.Shortcut
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTile
@@ -75,7 +77,7 @@ fun HIDDetailContent(
                     .padding(horizontal = 20.dp)
                     .padding(top = 20.dp)
                     .height(50.dp),
-                text = "Créer un nouveau shortcut",
+                text = stringResource(id = R.string.hid_detail_create_shortcut),
                 onClick = onCreateShortcut,
                 type = ButtonType.PRIMARY
             )
@@ -89,7 +91,7 @@ fun HIDDetailContent(
                 .padding(horizontal = 20.dp)
                 .padding(bottom = 30.dp)
                 .height(50.dp),
-            text = if (!deleteModeActivated) "Supprimer des shortcut" else "Fin",
+            text = if (!deleteModeActivated) stringResource(id = R.string.hid_detail_delete_shortcut) else stringResource(id = R.string.hid_detail_end),
             onClick = {
                 deleteModeActivated = !deleteModeActivated
             },

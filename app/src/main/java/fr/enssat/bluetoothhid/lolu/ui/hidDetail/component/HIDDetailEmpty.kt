@@ -10,9 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.tiles.ShortcutTileAdd
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuTheme
@@ -22,12 +24,14 @@ fun HIDDetailEmpty(
     onCreateShortcut: () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().padding(20.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Il sembelrait que vous n'aillez pas encore de shotcut. Créez-en un !",
+            text = stringResource(id = R.string.hid_detail_empty_message),
             style = LoLuAppTheme.typography.h2,
             textAlign = TextAlign.Center
         )

@@ -27,10 +27,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.bluetooth.BluetoothViewModel
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
@@ -64,7 +66,7 @@ fun HomeBluetoothContent(
                 Text(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    text = "Aucun appareil connecté",
+                    text = stringResource(id = R.string.home_bt_no_device_found),
                     textAlign = TextAlign.Center,
                     style = LoLuAppTheme.typography.h1,
                     color = LoLuAppTheme.colors.nuance100
@@ -83,7 +85,7 @@ fun HomeBluetoothContent(
                 Text(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    text = "Connecté à : " + connectedDevice?.name,
+                    text = stringResource(id = R.string.home_bt_connected_to) + " " + connectedDevice?.name,
                     textAlign = TextAlign.Center,
                     style = LoLuAppTheme.typography.h1,
                     color = LoLuAppTheme.colors.nuance100
@@ -126,7 +128,7 @@ fun HomeBluetoothContent(
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 30.dp, top = 20.dp)
                     .height(50.dp),
-                text = "Start Discovering",
+                text = stringResource(id = R.string.home_bt_start_discovering),
                 onClick = {
                     bluetoothViewModel.startDiscovering()
                 },
@@ -144,7 +146,7 @@ fun HomeBluetoothContent(
                 LoLuButton(
                     modifier = Modifier
                         .weight(1f),
-                    text = "Stop Discovering",
+                    text = stringResource(id = R.string.home_bt_stop_discovering),
                     onClick = {
                         bluetoothViewModel.stopDiscovering()
                     },

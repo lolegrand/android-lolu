@@ -16,12 +16,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.enssat.bluetoothhid.data.vo.HID
+import fr.enssat.bluetoothhid.lolu.R
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.ButtonType
 import fr.enssat.bluetoothhid.lolu.ui.component.buttons.LoLuButton
 import fr.enssat.bluetoothhid.lolu.ui.theme.LoLuAppTheme
@@ -49,7 +51,7 @@ fun HomeBottomSheetContent(
     ) {
 
         Text(
-            text = "Renseignez ici le nom de votre tout nouvel HID",
+            text = stringResource(id = R.string.home_bottom_sheet_title),
             style = LoLuAppTheme.typography.h1,
             textAlign = TextAlign.Center,
             color = LoLuAppTheme.colors.primary
@@ -67,7 +69,7 @@ fun HomeBottomSheetContent(
             },
             label = {
                 Text(
-                    text = "Go XLR ..."
+                    text = stringResource(id = R.string.home_bottom_sheet_placeholder)
                 )
             },
             modifier = Modifier.fillMaxWidth(),
@@ -91,12 +93,13 @@ fun HomeBottomSheetContent(
 
         Spacer(modifier = Modifier.height(30.dp))
 
+        val errorMessage = stringResource(id = R.string.home_bottom_sheet_error_msg)
         LoLuButton(
             modifier = Modifier.fillMaxWidth(),
-            text = "Valider",
+            text = stringResource(id = R.string.home_bottom_sheet_validate),
             onClick = {
                 if (textFieldValue.text.isBlank()) {
-                    error = "Le nom ne peux pas être vide"
+                    error = errorMessage
                 } else {
                     onValidateCreation(HID(textFieldValue.text))
                 }
